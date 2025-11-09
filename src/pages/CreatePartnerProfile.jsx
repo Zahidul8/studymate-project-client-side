@@ -17,8 +17,8 @@ const CreatePartnerProfile = () => {
         const availabilityTime = form.availability.value;
         const location = form.location.value;
         const experienceLevel = form.experienceLevel.value;
-        const rating = form.rating.value;
-        const partnerCount = form.partnerCount.value;
+        const rating = Number(form.rating.value);
+        const partnerCount = Number(form.partnerCount.value);
         const email = form.email.value;
     
         console.log('partner created',name, profileimage, subject, studyMode, availabilityTime, location, experienceLevel, rating, partnerCount, email);

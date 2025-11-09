@@ -45,7 +45,7 @@ return (
       {/* Ratings */}
       <div className="flex justify-center items-center mb-5 space-x-1">
         {renderStars(rating)}
-        <span className="ml-2 text-white font-semibold">{rating.toFixed(1)}</span>
+        <span className="ml-2 text-white font-semibold">{rating}</span>
       </div>
       {/* View Profile Button */}
       <Link to={`/DetailsPage/${_id}`}
