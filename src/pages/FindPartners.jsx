@@ -7,7 +7,7 @@ const FindPartners = () => {
     const [partnerData, setPartnerData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/partners')
+        axios.get('https://studymate-project-server.vercel.app/partners')
             .then(data => {
                 setPartnerData(data.data)
             })
@@ -18,7 +18,7 @@ const FindPartners = () => {
         const searchText = e.target.search.value;
         console.log(searchText)
         
-        axios.get(`http://localhost:3000/search?search=${searchText}`)
+        axios.get(`https://studymate-project-server.vercel.app/search?search=${searchText}`)
         .then(data => {
             console.log(data.data);
             setPartnerData(data.data)

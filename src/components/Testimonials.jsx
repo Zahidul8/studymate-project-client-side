@@ -10,7 +10,7 @@ const Testimonials = () => {
     
 
     useEffect(() => {
-        fetch('http://localhost:3000/reviewPartner')
+        fetch('https://studymate-project-server.vercel.app/reviewPartner')
         .then(res => res.json())
         .then(data => {
             setPartnerData(data);

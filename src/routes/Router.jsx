@@ -18,7 +18,7 @@ const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home,
-                loader: () => fetch('http://localhost:3000/topPartners')
+                loader: () => fetch('https://studymate-project-server.vercel.app/topPartners')
             },
             {
                 path: '/findPartners',
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
                 element: <PrivateRouter>
                     <DetailsPage></DetailsPage>
                 </PrivateRouter>,
-                loader: ({params}) => fetch(`http://localhost:3000/partners/${params.id}`)
+                loader: ({params}) => fetch(`https://studymate-project-server.vercel.app/partners/${params.id}`)
             },
             {
                 path: '/profile',

@@ -18,10 +18,10 @@ const CreatePartnerProfile = () => {
         const location = form.location.value;
         const experienceLevel = form.experienceLevel.value;
         const rating = Number(form.rating.value);
-        const partnerCount = Number(form.partnerCount.value);
+        const patnerCount = Number(form.partnerCount.value);
         const email = form.email.value;
     
-        console.log('partner created',name, profileimage, subject, studyMode, availabilityTime, location, experienceLevel, rating, partnerCount, email);
+        console.log('partner created',name, profileimage, subject, studyMode, availabilityTime, location, experienceLevel, rating, patnerCount, email);
         
         const newPartner = {
             name,
@@ -32,11 +32,11 @@ const CreatePartnerProfile = () => {
             location,
             experienceLevel,
             rating,
-            partnerCount,
+            patnerCount,
             email
         }
 
-        axios.post('http://localhost:3000/partners',newPartner)
+        axios.post('https://studymate-project-server.vercel.app/partners',newPartner)
         .then(data => {
             console.log(data.data);
             if (data.data.insertedId) {

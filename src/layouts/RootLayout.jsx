@@ -5,12 +5,12 @@ import Footer from '../components/Footer';
 
 const RootLayout = () => {
     return (
-        <div className='bg-[#F5E5E1] '>
+        <div className='bg-[#F5E5E1]'>
             <header>
                 <Navbar></Navbar>
             </header>
 
-            <main className='max-w-10/12 mx-auto'>
+            <main className='max-w-10/12 mx-auto min-h-[calc(100vh-351px)]'>
             <Outlet></Outlet>
             </main>
             <footer className='bg-[#0C2B4E]'>
