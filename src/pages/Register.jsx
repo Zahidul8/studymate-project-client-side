@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc"; // Google Icon
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 
@@ -9,6 +9,8 @@ const Register = () => {
     const [toggle, setToggle] = useState();
     const [error, setError] = useState('')
     const {createUser,signOutUser,updataUserProfile,signInWithGoogle} = useAuth();
+     const location = useLocation();
+  const navigate = useNavigate();
 
 
     const handleCreateUser = (e) => {
@@ -27,7 +29,7 @@ const Register = () => {
         setError('Password must be at least 6 characters long.')
         return 
       } else if (!hasUppercase.test(password)) {
-        setError('"Password must contain at least one uppercase letter."')
+        setError("Password must contain at least one uppercase letter.")
         return;
       } else if (!hasLowercase.test(password)) {
         setError("Password must contain at least one lowercase letter.")
@@ -55,8 +57,9 @@ const Register = () => {
           icon: "success",
           title: "User register successfully",
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         });
+        navigate('/');
         
       })
       .catch(error => {
@@ -79,20 +82,33 @@ const Register = () => {
     }
 
 
-        const handleSignInWithGoogle = () => {
-      signInWithGoogle()
-      .then(result => {
-        console.log(result.user);
-        
-      })
-      .catch(error => {
-        console.log(error.message);
-        
-      })
-     
-      
-
-    }
+  const handleSignInWithGoogle = () => {
+     signInWithGoogle()
+       .then(result => {
+         console.log(result.user);
+          Swal.fire({
+           position: "top-center",
+           icon: "success",
+           title: "User login successfully",
+           showConfirmButton: false,
+           timer: 1500
+         });
+         navigate(location?.state || '/')
+ 
+       })
+       .catch(error => {
+         console.log(error.message);
+             Swal.fire({
+           icon: "error",
+           title: "Oops...",
+           text: "Something went wrong!",
+         });
+ 
+       })
+ 
+ 
+ 
+   }
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#53629E] to-[#53629E] flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8">

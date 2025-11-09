@@ -47,11 +47,23 @@ const Login = () => {
     signInWithGoogle()
       .then(result => {
         console.log(result.user);
+         Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "User login successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
         navigate(location?.state || '/')
 
       })
       .catch(error => {
         console.log(error.message);
+            Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
 
       })
 
