@@ -7,6 +7,8 @@ import Register from "../pages/Register";
 import MyConnections from "../pages/MyConnections";
 import CreatePartnerProfile from "../pages/CreatePartnerProfile";
 import DetailsPage from "../pages/DetailsPage";
+import Profile from "../pages/Profile";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
     {
@@ -31,15 +33,27 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myConnections',
-                Component: MyConnections,
+                element: <PrivateRouter>
+                    <MyConnections></MyConnections>
+                </PrivateRouter>
             },
             {
                 path: '/createPartnerProfile',
-                Component: CreatePartnerProfile,
+                element:<PrivateRouter>
+                    <CreatePartnerProfile></CreatePartnerProfile>
+                </PrivateRouter>
             },
             {
                 path: '/DetailsPage',
-                Component: DetailsPage,
+                element: <PrivateRouter>
+                    <DetailsPage></DetailsPage>
+                </PrivateRouter>
+            },
+            {
+                path: '/profile',
+                element: <PrivateRouter>
+                    <Profile></Profile>
+                </PrivateRouter>
             }
         ]
     }

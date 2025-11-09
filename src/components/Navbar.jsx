@@ -1,14 +1,33 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
+import useAuth from '../hooks/useAuth';
+import { LuLogOut } from 'react-icons/lu';
 
 const Navbar = () => {
+  const {user, signOutUser} = useAuth();
 
   const links = <>
   <li className='text-white'><NavLink to='/'>Home</NavLink></li>
   <li className='text-white'><NavLink to='/findPartners'>Find Partners</NavLink></li>
-  
+  {
+    user && <>
+    <li className='text-white'><NavLink to='/createPartnerProfile'>Create Partner Profile</NavLink></li>
+    <li className='text-white'><NavLink to='/myConnections'>My Connections</NavLink></li>
+    </>
+    
+  }
   
   </>
+
+  const handleSignOut = () =>{
+    signOutUser()
+    .then()
+    .catch(error => {
+      console.log(error.message);
+      
+    })
+
+  }
     return (
         <div className="navbar bg-[#0C2B4E] shadow-sm px-4">
   <div className="navbar-start">
@@ -30,8 +49,23 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-2">
-    <Link to='/login' className='btn btn-primary'>Login</Link>
+    {
+      user? <div className="dropdown dropdown-bottom dropdown-end">
+  <div tabIndex={0} role="button" className=" m-1 cursor-pointer">
+    <figure className='w-[50px] h-[50px]'>
+      <img className='rounded-full object-cover' src={user?.photoURL} alt="" />
+    </figure>
+  </div>
+  <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+    <li><Link to='/profile'>Profile</Link></li>
+    <li><button onClick={handleSignOut}> <LuLogOut />Logout</button></li>
+    
+  </ul>
+</div>: <>
+      <Link to='/login' className='btn btn-primary'>Login</Link>
     <Link to='/register' className='btn btn-primary'>Register</Link>
+      </>
+    }
   </div>
 </div>
     );

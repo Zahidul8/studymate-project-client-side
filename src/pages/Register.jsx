@@ -3,9 +3,11 @@ import { FcGoogle } from "react-icons/fc"; // Google Icon
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const [toggle, setToggle] = useState();
+    const [error, setError] = useState('')
     const {createUser,signOutUser,updataUserProfile,signInWithGoogle} = useAuth();
 
 
@@ -16,6 +18,21 @@ const Register = () => {
       const photoURl = e.target.photo.value;
       const password = e.target.password.value;
       console.log('create user', displayName, email, photoURl, password);
+    
+      const hasUppercase = /[A-Z]/;
+      const hasLowercase =  /[a-z]/;
+
+      setError('')
+      if (password.length < 6) {
+        setError('Password must be at least 6 characters long.')
+        return 
+      } else if (!hasUppercase.test(password)) {
+        setError('"Password must contain at least one uppercase letter."')
+        return;
+      } else if (!hasLowercase.test(password)) {
+        setError("Password must contain at least one lowercase letter.")
+        return;
+      }
 
 
       createUser(email, password)
@@ -33,10 +50,29 @@ const Register = () => {
           
         })
         e.target.reset();
+         Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "User register successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
         
       })
       .catch(error => {
         console.log(error.message);
+        let message = '';
+        if (error.code === "auth/email-already-in-use") {
+          message = "This email is already registered. Please use a different email or try logging in."
+        } else {
+          message = "Registration failed. Please try again later.";
+        }
+           Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: message,
+        });
+        
         
       })
       
@@ -127,6 +163,7 @@ const Register = () => {
                 }
             </span>
            </div>
+           <p className="text-[14px] text-red-500 mt-2">{error}</p>
           </div>
 
           {/* Register Button */}
