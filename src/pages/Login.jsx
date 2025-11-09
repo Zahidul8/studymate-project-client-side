@@ -1,7 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
+
+    const [toggle, setToggle] = useState(false);
+    const {signInWithEmail,signInWithGoogle} = useAuth();
+
+    const handleSignInUserWithEmail = (e)=> {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      console.log('signIn user', email, password);
+
+      signInWithEmail(email, password)
+      .then(result => {
+        console.log(result.user);
+        e.target.reset();
+        
+      })
+      .catch(error => {
+        console.log(error.message);
+        
+      })
+    }
+
+    const handleSignInWithGoogle = () => {
+      signInWithGoogle()
+      .then(result => {
+        console.log(result.user);
+        
+      })
+      .catch(error => {
+        console.log(error.message);
+        
+      })
+     
+      
+
+    }
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#53629E] to-[#53629E] flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8">
@@ -11,7 +50,7 @@ const Login = () => {
         </h2>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form onSubmit={handleSignInUserWithEmail} className="space-y-4">
           {/* Email */}
           <div>
             <label className="label">
@@ -19,6 +58,7 @@ const Login = () => {
             </label>
             <input
               type="email"
+              name="email"
               placeholder="Enter your email"
               className="input input-bordered w-full"
               required
@@ -30,12 +70,21 @@ const Login = () => {
             <label className="label">
               <span className="label-text font-semibold">Password</span>
             </label>
-            <input
-              type="password"
+           <div className="relative">
+             <input
+              type={toggle? 'text': 'password'}
+              name="password"
               placeholder="Enter your password"
               className="input input-bordered w-full"
               required
             />
+            <span onClick={() => setToggle(!toggle)} className="absolute top-3 right-5 z-10">
+                {
+                    toggle?<FaEyeSlash />: <FaEye />
+                }
+            </span>
+            
+           </div>
             <div className="text-right mt-2">
               <Link
                 to="/forgot-password"
@@ -54,6 +103,17 @@ const Login = () => {
             Login
           </button>
         </form>
+
+         {/* Divider */}
+        <div className="divider">OR</div>
+
+          <button
+                  className="btn btn-outline w-full flex items-center justify-center gap-2 hover:bg-gray-100"
+                  onClick={handleSignInWithGoogle}
+                >
+                  <FcGoogle size={24} />
+                  Sign in with Google
+                </button>
 
         
         <p className="text-center text-sm text-gray-500 mt-4">
