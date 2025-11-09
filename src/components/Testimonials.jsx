@@ -49,48 +49,6 @@ const Testimonials = () => {
           </div>
         </div>)
         }
-     
-
-        {/* <div className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl transition duration-300 relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 -top-10">
-            <img
-              src="https://i.ibb.co/6m6szxD/profile2.jpg"
-              alt="User"
-              className="w-20 h-20 rounded-full border-4 border-[#F8F9F7]"
-            />
-          </div>
-          <div className="pt-12">
-            <p className="text-gray-600 italic mb-4">
-              “My study partner explained complex concepts simply. The
-              collaboration boosted my confidence before exams!”
-            </p>
-            <h3 className="text-lg font-semibold text-[#DAA520]">
-              Imran Hossain
-            </h3>
-            <p className="text-sm text-gray-500">Physics Major</p>
-          </div>
-        </div> */}
-
-        {/* Testimonial 3 */}
-        {/* <div className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl transition duration-300 relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 -top-10">
-            <img
-              src="https://i.ibb.co/p2GvQH7/profile3.jpg"
-              alt="User"
-              className="w-20 h-20 rounded-full border-4 border-[#F8F9F7]"
-            />
-          </div>
-          <div className="pt-12">
-            <p className="text-gray-600 italic mb-4">
-              “I love how this platform connected me with people who share the
-              same passion for learning. A great experience!”
-            </p>
-            <h3 className="text-lg font-semibold text-[#DAA520]">
-              Tasnim Akter
-            </h3>
-            <p className="text-sm text-gray-500">Computer Science Student</p>
-          </div>
-        </div> */}
       </div>
     </section>
   );

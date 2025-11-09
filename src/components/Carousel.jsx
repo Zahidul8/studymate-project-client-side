@@ -10,7 +10,7 @@ import studyImage5 from '../assets/study-iamge-5.jpg'
 const Carousel = () => {
   return (
     <div className="flex justify-center items-center">
-    <div className="carousel max-w-full max-h-[700px]  shadow-lg">
+    <div className="carousel max-w-full max-h-[700px]  shadow-lg rounded-2xl">
       {/* Slide 1 */}
       <div id="slide1" className="carousel-item relative w-full">
         <img
