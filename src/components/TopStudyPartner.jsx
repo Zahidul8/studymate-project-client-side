@@ -1,8 +1,10 @@
+import React from 'react';
+import { Link } from 'react-router';
 
 const TopStudyPartner = ({partner}) => {
     console.log(partner);
 
-    const {name, profileimage, experienceLevel, subject, rating} = partner;
+    const {_id,name, profileimage, experienceLevel, subject, rating} = partner;
     
       const renderStars = (rating) => {
     const stars = [];
@@ -25,7 +27,7 @@ const TopStudyPartner = ({partner}) => {
     
     
 return (
-    <div className="bg-gradient-to-r from-[#8ABEB9] to-[#427A76] text-white rounded-2xl shadow-2xl p-6 hover:scale-105 transform transition duration-300">
+    <div className="bg-gradient-to-r from-[#8ABEB9] to-[#427A76] text-white rounded-2xl shadow-2xl p-6 hover:scale-104 transform transition duration-300">
       {/* Profile Image */}
       <div className="flex justify-center mb-4">
         <img
@@ -46,11 +48,11 @@ return (
         <span className="ml-2 text-white font-semibold">{rating.toFixed(1)}</span>
       </div>
       {/* View Profile Button */}
-      <button
-        className="w-full bg-[#1A3D64] text-white font-semibold py-2 rounded-lg hover:bg-gray-100 hover:text-[#1A3D64] cursor-pointer transition-colors duration-300"
+      <Link to={`/DetailsPage/${_id}`}
+        className=" bg-[#1A3D64] w-full btn text-white font-semibold py-2 rounded-lg hover:bg-gray-100 hover:text-[#1A3D64] cursor-pointer transition-colors duration-300"
       >
         View Profile
-      </button>
+      </Link>
     </div>
   );
 };

@@ -53,7 +53,7 @@ const Navbar = () => {
       user? <div className="dropdown dropdown-bottom dropdown-end">
   <div tabIndex={0} role="button" className=" m-1 cursor-pointer">
     <figure className='w-[50px] h-[50px]'>
-      <img className='rounded-full object-cover' src={user?.photoURL} alt="" />
+      <img className='rounded-full object-cover' src={user.photoURL} alt="" />
     </figure>
   </div>
   <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">

@@ -45,10 +45,11 @@ const router = createBrowserRouter([
                 </PrivateRouter>
             },
             {
-                path: '/DetailsPage',
+                path: '/DetailsPage/:id',
                 element: <PrivateRouter>
                     <DetailsPage></DetailsPage>
-                </PrivateRouter>
+                </PrivateRouter>,
+                loader: ({params}) => fetch(`http://localhost:3000/partners/${params.id}`)
             },
             {
                 path: '/profile',

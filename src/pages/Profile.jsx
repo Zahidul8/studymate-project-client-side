@@ -1,5 +1,4 @@
-
-
+import React from 'react';
 import { FaEnvelope, FaUserCircle, FaCheckCircle, FaUsers, FaHeart } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 
