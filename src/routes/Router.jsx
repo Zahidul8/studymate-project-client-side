@@ -49,7 +49,6 @@ const router = createBrowserRouter([
                 element: <PrivateRouter>
                     <DetailsPage></DetailsPage>
                 </PrivateRouter>,
-                loader: ({params}) => fetch(`https://studymate-project-server.vercel.app/partners/${params.id}`)
             },
             {
                 path: '/profile',

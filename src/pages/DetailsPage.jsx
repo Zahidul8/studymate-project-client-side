@@ -1,5 +1,5 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import { FaMapMarkerAlt, FaStar, FaUserFriends } from "react-icons/fa";
 import { MdOutlineSchool, MdAccessTimeFilled, MdEmail } from "react-icons/md";
 import { GiLevelEndFlag } from "react-icons/gi";
@@ -9,7 +9,9 @@ import Swal from 'sweetalert2';
 
 const DetailsPage = () => {
   const {user} = useAuth();
-    const partnerData = useLoaderData();
+     const {id} = useParams();
+     const [refetch, setRefetch] = useState(false)
+    const [partnerData, setPartnerData] = useState({});
     const {_id,availabilityTime, email, experienceLevel, location, name, patnerCount,profileimage, rating, studyMode,subject} = partnerData;
 
     const newPartner = {
@@ -26,6 +28,16 @@ const DetailsPage = () => {
         requesterEmail: user?.email
         
       }
+
+   
+      
+      useEffect(() => {
+          axios.get(`https://studymate-project-server.vercel.app/partners/${id}`)
+          .then(data => {
+            setPartnerData(data.data)
+          })
+
+      }, [id, refetch])
    
     const handleSendRequest = () => {
 
@@ -36,10 +48,11 @@ const DetailsPage = () => {
              Swal.fire({
                     position: "top-center",
                     icon: "success",
-                    title: "Request send successfully",
+                    title: "Request sent successfully",
                     showConfirmButton: false,
                     timer: 1500
                   });
+                  setRefetch(!refetch);
           
         }
         
@@ -50,6 +63,8 @@ const DetailsPage = () => {
         console.log(data.data);
         
       })
+
+      
 
 
 
