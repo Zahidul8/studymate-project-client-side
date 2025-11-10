@@ -1,32 +1,39 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import FindPartnerCard from '../components/findPartnerCard';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const FindPartners = () => {
 
     const [partnerData, setPartnerData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get('https://studymate-project-server.vercel.app/partners')
             .then(data => {
                 setPartnerData(data.data)
+                setLoading(false);
             })
     }, [])
+
 
     const handleSearchPartner =(e) => {
         e.preventDefault();
         const searchText = e.target.search.value;
         console.log(searchText)
-        
+        setLoading(true)
         axios.get(`https://studymate-project-server.vercel.app/search?search=${searchText}`)
         .then(data => {
             console.log(data.data);
             setPartnerData(data.data)
+            setLoading(false);
             
         })
 
 
     }
+
+    
     return (
         <div>
 
@@ -61,13 +68,17 @@ const FindPartners = () => {
                 </div>
 
             </div>
-            <section className='my-10'>
+
+            {
+                loading? <LoadingSpinner></LoadingSpinner>:   <section className='my-10'>
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {
                         partnerData.map(data => <FindPartnerCard key={data._id} data={data}></FindPartnerCard>)
                     }
                 </div>
             </section>
+            }
+          
         </div>
     );
 };

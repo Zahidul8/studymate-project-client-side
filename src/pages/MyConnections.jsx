@@ -2,23 +2,27 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const MyConnections = () => {
 
-  const { user } = useAuth()
+  const { user } = useAuth();
+  const [loading, setLoading]= useState(true);
   const modalRef = useRef();
   const [partnerData, setPartnerData] = useState([]);
   const [selectedPartner, setSelectedPartner] = useState({});
   const [refecth, setRefetch] = useState(false);
 
   useEffect(() => {
-
+    setLoading(true);
     axios.get(`https://studymate-project-server.vercel.app/partnerCount?email=${user?.email}`)
       .then(data => {
         console.log(data.data);
         setPartnerData(data.data)
+        setLoading(false);
 
       })
+
 
   }, [user,refecth])
 
@@ -91,6 +95,12 @@ const MyConnections = () => {
     })
     
   }
+
+
+  if (loading) {
+        return <LoadingSpinner></LoadingSpinner>
+        
+    }
 
 
   return (

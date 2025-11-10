@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const Login = () => {
 
   const [toggle, setToggle] = useState(false);
-  const { signInWithEmail, signInWithGoogle } = useAuth();
+  const { signInWithEmail, signInWithGoogle,setLoading } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -41,9 +41,18 @@ const Login = () => {
         console.log(error.message);
 
       })
+        .finally(() => {
+      setLoading(false);
+    })
   }
 
   const handleSignInWithGoogle = () => {
+
+    const timeout = setTimeout(() =>{
+      setLoading(false)
+    }, 1200)
+
+
     signInWithGoogle()
       .then(result => {
         console.log(result.user);
@@ -66,6 +75,10 @@ const Login = () => {
         });
 
       })
+       .finally(() => {
+      clearTimeout(timeout);
+      setLoading(false);
+    })
 
 
 

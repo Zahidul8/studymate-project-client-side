@@ -9,7 +9,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 const Register = () => {
     const [toggle, setToggle] = useState();
     const [error, setError] = useState('')
-    const {createUser,signOutUser,updataUserProfile,signInWithGoogle,loading} = useAuth();
+    const {createUser,signOutUser,updataUserProfile,signInWithGoogle,loading,setLoading} = useAuth();
      const location = useLocation();
   const navigate = useNavigate();
 
@@ -79,11 +79,18 @@ const Register = () => {
         
         
       })
+       .finally(() => {
+        setLoading(false);
+      })
       
     }
 
 
   const handleSignInWithGoogle = () => {
+
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1200)
      signInWithGoogle()
        .then(result => {
          console.log(result.user);
@@ -106,6 +113,10 @@ const Register = () => {
          });
  
        })
+         .finally(() => {
+        clearTimeout(timeout);
+        setLoading(false);
+      })
  
  
  

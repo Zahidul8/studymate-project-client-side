@@ -1,13 +1,13 @@
-import React from 'react';
+import React  from 'react';
 import useAuth from '../hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const CreatePartnerProfile = () => {
     const {user} = useAuth();
-
     const handleCreatePartner = (e) => {
-
+     
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -36,9 +36,11 @@ const CreatePartnerProfile = () => {
             email
         }
 
+ 
         axios.post('https://studymate-project-server.vercel.app/partners',newPartner)
         .then(data => {
             console.log(data.data);
+          
             if (data.data.insertedId) {
                   Swal.fire({
                           position: "top-center",
@@ -55,9 +57,12 @@ const CreatePartnerProfile = () => {
 
 
     }
-    
 
-     return (
+
+   
+
+     return  (
+      
     <div className="max-w-4xl mx-auto bg-[#F8F9F7] shadow-xl rounded-2xl p-8 my-10 border border-[#E0E0E0]">
       {/* Header */}
       <h2 className="text-3xl font-bold text-center text-[#1A1A1A] mb-2">

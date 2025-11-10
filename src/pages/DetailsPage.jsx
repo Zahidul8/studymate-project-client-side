@@ -6,10 +6,12 @@ import { GiLevelEndFlag } from "react-icons/gi";
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const DetailsPage = () => {
   const {user} = useAuth();
      const {id} = useParams();
+     const [loading, setLoading] = useState(true);
      const [refetch, setRefetch] = useState(false)
     const [partnerData, setPartnerData] = useState({});
     const {_id,availabilityTime, email, experienceLevel, location, name, patnerCount,profileimage, rating, studyMode,subject} = partnerData;
@@ -35,12 +37,12 @@ const DetailsPage = () => {
           axios.get(`https://studymate-project-server.vercel.app/partners/${id}`)
           .then(data => {
             setPartnerData(data.data)
+            setLoading(false)
           })
 
       }, [id, refetch])
    
     const handleSendRequest = () => {
-
       axios.patch(`https://studymate-project-server.vercel.app/partners/${_id}`)
       .then(data => {
         console.log(data.data);
@@ -53,6 +55,7 @@ const DetailsPage = () => {
                     timer: 1500
                   });
                   setRefetch(!refetch);
+                  setLoading(false)
           
         }
         
@@ -68,6 +71,12 @@ const DetailsPage = () => {
 
 
 
+    }
+
+
+    if (loading) {
+        return <LoadingSpinner></LoadingSpinner>
+        
     }
 
     
