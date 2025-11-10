@@ -3,11 +3,58 @@ import { useLoaderData } from 'react-router';
 import { FaMapMarkerAlt, FaStar, FaUserFriends } from "react-icons/fa";
 import { MdOutlineSchool, MdAccessTimeFilled, MdEmail } from "react-icons/md";
 import { GiLevelEndFlag } from "react-icons/gi";
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const DetailsPage = () => {
+  const {user} = useAuth();
     const partnerData = useLoaderData();
-    const {availabilityTime, email, experienceLevel, location, name, patnerCount,profileimage, rating, studyMode,subject} = partnerData;
-    console.log(partnerData);
+    const {_id,availabilityTime, email, experienceLevel, location, name, patnerCount,profileimage, rating, studyMode,subject} = partnerData;
+
+    const newPartner = {
+        name,
+        profileimage,
+        subject, 
+        studyMode,
+        availabilityTime,
+        location,
+        experienceLevel,
+        rating,
+        patnerCount,
+        email,
+        requesterEmail: user?.email
+        
+      }
+   
+    const handleSendRequest = () => {
+
+      axios.patch(`https://studymate-project-server.vercel.app/partners/${_id}`)
+      .then(data => {
+        console.log(data.data);
+        if (data.data.matchedCount) {
+             Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "Request send successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+          
+        }
+        
+      })
+
+      axios.post('https://studymate-project-server.vercel.app/partnerCount', newPartner)
+      .then(data => {
+        console.log(data.data);
+        
+      })
+
+
+
+    }
+
     
     return (
         
@@ -42,7 +89,7 @@ const DetailsPage = () => {
 
         {/* Button */}
         <div className="mt-4 md:mt-0">
-          <button className="btn btn-primary bg-indigo-600 hover:bg-indigo-700 border-none px-6 rounded-full text-white transition-all duration-200">
+          <button onClick={handleSendRequest} className="btn btn-primary bg-indigo-600 hover:bg-indigo-700 border-none px-6 rounded-full text-white transition-all duration-200">
             Send Partner Request
           </button>
         </div>
