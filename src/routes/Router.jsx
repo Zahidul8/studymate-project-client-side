@@ -9,6 +9,7 @@ import CreatePartnerProfile from "../pages/CreatePartnerProfile";
 import DetailsPage from "../pages/DetailsPage";
 import Profile from "../pages/Profile";
 import PrivateRouter from "./PrivateRouter";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
                 element: <PrivateRouter>
                     <Profile></Profile>
                 </PrivateRouter>
+            },
+            {
+                path:"/*",
+                Component: ErrorPage,
             }
         ]
     }

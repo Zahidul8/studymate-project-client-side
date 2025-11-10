@@ -2,11 +2,13 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import FindPartnerCard from '../components/findPartnerCard';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { Link } from 'react-router';
 
 const FindPartners = () => {
 
     const [partnerData, setPartnerData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [refecth, setRefetch] = useState(false);
 
     useEffect(() => {
         axios.get('https://studymate-project-server.vercel.app/partners')
@@ -14,7 +16,7 @@ const FindPartners = () => {
                 setPartnerData(data.data)
                 setLoading(false);
             })
-    }, [])
+    }, [refecth])
 
 
     const handleSearchPartner =(e) => {
@@ -70,14 +72,21 @@ const FindPartners = () => {
             </div>
 
             {
-                loading? <LoadingSpinner></LoadingSpinner>:   <section className='my-10'>
+                loading? <LoadingSpinner></LoadingSpinner>: partnerData.length === 0 ? <div className='text-center py-18'>
+             <h2 className='text-center text-4xl font-semibold text-primary'>No study partner found</h2>
+             <button onClick={() => setRefetch(!refecth)} className='btn btn-primary my-10'>See all</button >
+           </div> : <section className='my-10'>
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {
                         partnerData.map(data => <FindPartnerCard key={data._id} data={data}></FindPartnerCard>)
                     }
                 </div>
-            </section>
+            </section> 
             }
+
+
+
+          
           
         </div>
     );
