@@ -4,11 +4,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Register = () => {
     const [toggle, setToggle] = useState();
     const [error, setError] = useState('')
-    const {createUser,signOutUser,updataUserProfile,signInWithGoogle} = useAuth();
+    const {createUser,signOutUser,updataUserProfile,signInWithGoogle,loading} = useAuth();
      const location = useLocation();
   const navigate = useNavigate();
 
@@ -108,6 +109,12 @@ const Register = () => {
  
  
  
+   }
+
+
+   if (loading) {
+   return <LoadingSpinner></LoadingSpinner>
+    
    }
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#53629E] to-[#53629E] flex items-center justify-center px-4">

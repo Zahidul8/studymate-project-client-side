@@ -226,7 +226,7 @@ const CreatePartnerProfile = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-[#DAA520] hover:bg-[#C4971D] text-white font-semibold py-2 px-6 rounded-lg shadow-md transition duration-300"
+            className="bg-[#DAA520] cursor-pointer hover:bg-[#C4971D] text-white font-semibold py-2 px-6 rounded-lg shadow-md transition duration-300"
           >
             Create Profile
           </button>

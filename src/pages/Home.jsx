@@ -4,6 +4,7 @@ import TopStudyPartner from '../components/TopStudyPartner';
 import { useLoaderData } from 'react-router';
 import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 
 const Home = () => {
@@ -39,7 +40,7 @@ const Home = () => {
             <Testimonials></Testimonials>
            </section>
 
-
+           
         </div>
     );
 };

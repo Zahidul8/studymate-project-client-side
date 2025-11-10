@@ -193,7 +193,7 @@ const MyConnections = () => {
                         {/* Save Button */}
                         <button
                           type="submit"
-                          className="w-full py-3 bg-[#0C2B4E] text-white font-semibold rounded-lg hover:bg-[#103865] transition duration-200 shadow-md"
+                          className="w-full py-3 bg-[#0C2B4E] text-white font-semibold rounded-lg hover:bg-[#103865] transition duration-200 shadow-md cursor-pointer"
                         >
                           Save Changes
                         </button>
