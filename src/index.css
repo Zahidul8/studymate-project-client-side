@@ -44,6 +44,11 @@
 .top-partner-title {
   font-size: clamp(18px, 4vw, 24px);
 }
+.auth-title{
+   font-size: clamp(1.5rem, 6vw, 30px);
+}
 .icon-text-style {
   font-size: clamp(14px, 4vw, 30px);
 }
+
+/* bg-gradient-to-br from-[#53629E] to-[#53629E] */

@@ -105,7 +105,7 @@ const DetailsPage = () => {
 
   return (
 
-    <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-md p-8 mt-10 ">
+    <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-md p-8 my-10 ">
       {/* Header section */}
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
         {/* Profile image */}
@@ -140,14 +140,14 @@ const DetailsPage = () => {
             Send Partner Request
           </button>
 
-          {/* Open the modal using document.getElementById('ID').showModal() method */}
-          <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box">
+         {/* message modal  */}
+          <dialog ref={modalRef} className="modal  modal-bottom sm:modal-middle">
+            <div className="modal-box bg-white">
               <h3 className="text-xl font-semibold mb-2">Send a Message to {partnerData.name}</h3>
               <form onSubmit={handleSendRequest}>
                 <textarea
                   ref={messageRef}
-                  className="textarea textarea-bordered w-full resize-none"
+                  className="textarea textarea-bordered w-full resize-none "
                   placeholder="Write a short message..."
                   required
                 ></textarea>
@@ -155,7 +155,6 @@ const DetailsPage = () => {
               </form>
               <div className="modal-action">
                 <form method="dialog">
-                  {/* if there is a button in form, it will close the modal */}
                   <button className="btn">Close</button>
                 </form>
               </div>

@@ -128,10 +128,10 @@ const Register = () => {
     
    }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#53629E] to-[#53629E] flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8">
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-4 sm:p-8">
         {/* Title */}
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <h2 className="auth-title font-bold text-center text-gray-800 mb-6">
           Join <span className="text-indigo-600">StudyMate</span> Today
         </h2>
 
