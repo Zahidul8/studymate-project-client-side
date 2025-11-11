@@ -131,21 +131,21 @@ const MyConnections = () => {
                     alt="Partner"
                     className="w-14 h-14 rounded-full object-cover border-2 border-[#0C2B4E]"
                   />
-                  <span className="font-medium text-gray-900">{data.name}</span>
+                  <span className="font-medium md:text-[14px] lg:text-[16px] text-gray-900">{data.name}</span>
                 </td>
-                <td className="px-6 py-4 text-gray-800 font-medium">{data.subject}</td>
-                <td className="px-6 py-4 text-gray-800 font-medium">{data.studyMode}</td>
+                <td className="px-6 py-4 text-gray-800 font-medium md:text-[14px] lg:text-[16px]">{data.subject}</td>
+                <td className="px-6 py-4 text-gray-800 font-medium md:text-[14px] lg:text-[16px]">{data.studyMode}</td>
                 <td className="px-6 py-4 text-center">
                   <button onClick={() => {
                     modalRef.current.showModal()
                     setSelectedPartner(data);
-                  }} className="px-4 py-2 cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-semibold transition-colors duration-200">
+                  }} className="px-4 py-2 cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-semibold transition-colors duration-200 md:text-[14px] lg:text-[16px]">
                     Update
                   </button>
 
                 </td>
                 <td className="px-6 py-4 text-center">
-                  <button onClick={() => handleDeleteRequest(data._id)} className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg cursor-pointer font-semibold transition-colors duration-200">
+                  <button onClick={() => handleDeleteRequest(data._id)} className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg cursor-pointer font-semibold transition-colors duration-200 md:text-[14px] lg:text-[16px]">
                     Delete
                   </button>
                 </td>
@@ -153,13 +153,15 @@ const MyConnections = () => {
             </tbody>)
           }
 
-          {/* Mobile Card Layout */}
+          
         </table>
       
 
 
        
       </div>
+
+      {/* update modals  */}
         <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
           <div className="modal-box">
             <form
@@ -224,7 +226,7 @@ const MyConnections = () => {
           </div>
         </dialog>
 
- {/* mobile card  */}
+ {/* Mobile Card Layout */}
         <div className=" md:hidden space-y-4 mt-6">
           {partnerData.map((data) => (
             <div

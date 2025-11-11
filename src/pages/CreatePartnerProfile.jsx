@@ -85,7 +85,7 @@ const CreatePartnerProfile = () => {
               name="name"
               placeholder="Enter your full name"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
             />
           </div>
 
@@ -94,11 +94,11 @@ const CreatePartnerProfile = () => {
               Profile Image URL
             </label>
             <input
-              type="text"
+              type="url"
               name="profileimage"
               placeholder="Paste your profile image link"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
             />
           </div>
         </div>
@@ -114,7 +114,7 @@ const CreatePartnerProfile = () => {
               name="subject"
               placeholder="e.g. English, Math, Programming"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
             />
           </div>
 
@@ -125,7 +125,7 @@ const CreatePartnerProfile = () => {
             <select
               name="studyMode"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
             >
               <option value="">Select mode</option>
               <option value="Online">Online</option>
@@ -145,7 +145,7 @@ const CreatePartnerProfile = () => {
               name="availability"
               placeholder="e.g. Evening 6–9 PM"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
             />
           </div>
 
@@ -158,7 +158,7 @@ const CreatePartnerProfile = () => {
               name="location"
               placeholder="e.g. Dhaka, Mirpur"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
             />
           </div>
         </div>
@@ -166,13 +166,13 @@ const CreatePartnerProfile = () => {
         {/* Experience & Rating */}
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700  mb-1">
               Experience Level
             </label>
             <select
               name="experienceLevel"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
             >
               <option value="">Select level</option>
               <option value="Beginner">Beginner</option>
@@ -193,7 +193,7 @@ const CreatePartnerProfile = () => {
               max="5"
               step="0.1"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
             />
           </div>
         </div>
@@ -209,7 +209,7 @@ const CreatePartnerProfile = () => {
               name="partnerCount"
               value={0}
               readOnly
-              className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded-lg text-gray-600 cursor-not-allowed"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 bg-gray-100 rounded-lg text-gray-600 cursor-not-allowed"
             />
           </div>
 
@@ -222,7 +222,7 @@ const CreatePartnerProfile = () => {
               name="email"
               value={user?.email}
               readOnly
-              className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded-lg text-gray-600 cursor-not-allowed"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-600 bg-gray-100 rounded-lg cursor-not-allowed"
             />
           </div>
         </div>

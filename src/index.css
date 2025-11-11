@@ -10,7 +10,7 @@
   name: "light";
   default: true;
 
-  --color-primary: #435663;
+  --color-primary: #16476A; /* ok for all button and section heading*/
   --color-secondary: teal;
   --color-base-100: #F5E5E1; /* background */
   --color-base-content: #0c0e1a; /* text */
@@ -20,7 +20,7 @@
   name: "dark";
   prefersdark: true;
 
-  --color-primary: #E3E8FF;
+  --color-primary: #B87C4C; /* ok for all button and section heading*/
   --color-secondary: #A78BFA;
   --color-base-100: #0c0e1a; /* dark background */
   --color-base-content: #ffffff; /* light text */

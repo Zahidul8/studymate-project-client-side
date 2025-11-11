@@ -6,7 +6,7 @@ const Profile = () => {
   const { user } = useAuth();
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+    <div className="flex justify-center items-center my-10">
       <div className="w-80 bg-white rounded-3xl shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:-translate-y-1">
         {/* Profile Image */}
         <div className="relative">
@@ -24,11 +24,11 @@ const Profile = () => {
         {/* Info Section */}
         <div className="p-6 text-center">
           <h2 className="text-xl font-semibold text-gray-900 flex items-center justify-center gap-1">
-            {user?.displayName || "Guest User"}
+            {user?.displayName}
             <FaCheckCircle className="text-blue-500" />
           </h2>
           <p className="text-gray-500 text-sm mt-1">
-            {user?.email || "no-email@example.com"}
+            {user?.email}
           </p>
 
           <p className="mt-3 text-gray-600 text-sm">

@@ -136,7 +136,7 @@ const DetailsPage = () => {
 
         {/* Button */}
         <div className="mt-4 md:mt-0">
-          <button onClick={() => modalRef.current.showModal()} className="btn btn-primary bg-indigo-600 hover:bg-indigo-700 border-none px-6 rounded-full text-white transition-all duration-200">
+          <button onClick={() => modalRef.current.showModal()} className="btn  bg-indigo-600 hover:bg-indigo-700 border-none px-6 rounded-full text-white transition-all duration-200">
             Send Partner Request
           </button>
 

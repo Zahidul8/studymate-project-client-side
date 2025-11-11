@@ -5,7 +5,7 @@ import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer >
-        <div className="footer mx-auto sm:footer-horizontal max-w-6xl text-base-100 p-10 ">
+        <div className="footer mx-auto sm:footer-horizontal max-w-6xl text-white p-10 ">
 
       {/* Project Info */}
       <nav>

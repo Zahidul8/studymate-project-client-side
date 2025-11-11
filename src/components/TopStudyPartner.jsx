@@ -49,7 +49,7 @@ return (
       </div>
       {/* View Profile Button */}
       <Link to={`/DetailsPage/${_id}`}
-        className=" bg-[#1A3D64] w-full btn text-white font-semibold py-2 rounded-lg hover:bg-gray-100 hover:text-[#1A3D64] cursor-pointer transition-colors duration-300"
+        className=" btn-primary w-full btn text-white font-semibold py-2 rounded-lg hover:bg-gray-100 hover:text-[#1A3D64] cursor-pointer transition-colors duration-300"
       >
         View Profile
       </Link>

@@ -19,7 +19,7 @@ const FindPartnerCard = ({ data }) => {
         </div>
       </div>
       <div className="p-6">
-        <h2 className="top-partner-title font-bold mb-2">{name}</h2>
+        <h2 className="top-partner-title text-black font-bold mb-2">{name}</h2>
         <p className="text-gray-500 mb-1 font-semibold">Subject: <span className='text-orange-500 text-sm'>{subject}</span></p>
         <p className="text-gray-500 mb-4 font-semibold">Study Mode: <span className='text-sky-400 text-sm'>{studyMode}</span></p>
 

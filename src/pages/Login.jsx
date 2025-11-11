@@ -68,12 +68,7 @@ const Login = () => {
       })
       .catch(error => {
         console.log(error.message);
-            Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-        });
-
+        
       })
        .finally(() => {
       clearTimeout(timeout);
@@ -84,8 +79,8 @@ const Login = () => {
 
   }
   return (
-    <div className="min-h-screen  flex items-center justify-center">
-      <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-4 sm:p-8">
+    <div className="flex items-center justify-center">
+      <div className="w-full my-10  max-w-md bg-white shadow-2xl rounded-2xl p-4 sm:p-8">
         {/* Title */}
         <h2 className="auth-title font-bold text-center text-gray-800 mb-6">
           Welcome Back to <span className="text-indigo-600">StudyMate</span>
@@ -96,13 +91,13 @@ const Login = () => {
           {/* Email */}
           <div>
             <label className="label">
-              <span className="label-text font-semibold">Email</span>
+              <span className="label-text text-gray-800 font-semibold">Email</span>
             </label>
             <input
               type="email"
               name="email"
               placeholder="Enter your email"
-              className="input input-bordered w-full"
+              className="input input-bordered border-gray-600 text-gray-800 bg-white w-full"
               required
             />
           </div>
@@ -110,19 +105,19 @@ const Login = () => {
           {/* Password */}
           <div>
             <label className="label">
-              <span className="label-text font-semibold">Password</span>
+              <span className="label-text text-gray-800 font-semibold">Password</span>
             </label>
             <div className="relative">
               <input
                 type={toggle ? 'text' : 'password'}
                 name="password"
                 placeholder="Enter your password"
-                className="input input-bordered w-full"
+                className="input input-bordered border-gray-600 text-gray-800 bg-white w-full"
                 required
               />
               <span onClick={() => setToggle(!toggle)} className="absolute top-3 right-5 z-10">
                 {
-                  toggle ? <FaEyeSlash /> : <FaEye />
+                  toggle ? <FaEyeSlash className="text-gray-800"/> : <FaEye className="text-gray-800"/>
                 }
               </span>
 
@@ -147,10 +142,10 @@ const Login = () => {
         </form>
 
         {/* Divider */}
-        <div className="divider">OR</div>
+        <div className=" text-center my-3 text-gray-800">OR</div>
 
         <button
-          className="btn btn-outline w-full flex items-center justify-center gap-2 hover:bg-gray-100"
+          className="btn btn-outline w-full flex text-gray-800 items-center justify-center gap-2 hover:bg-gray-100"
           onClick={handleSignInWithGoogle}
         >
           <FcGoogle size={24} />
