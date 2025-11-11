@@ -177,7 +177,7 @@ const CreatePartnerProfile = () => {
               <option value="">Select level</option>
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>
-              <option value="Expert">Expert</option>
+              <option value="Advanced">Advanced</option>
             </select>
           </div>
 

@@ -12,7 +12,7 @@ const ErrorPage = () => {
         {/* Back Home Button */}
         <Link
           to="/"
-          className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-200 font-semibold"
+          className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-neutral-500 transition duration-200 font-semibold"
         >
           Back Home
         </Link>

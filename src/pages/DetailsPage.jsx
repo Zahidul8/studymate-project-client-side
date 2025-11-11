@@ -12,6 +12,7 @@ const DetailsPage = () => {
   const {user} = useAuth();
      const {id} = useParams();
      const [loading, setLoading] = useState(true);
+     const [success, setSuccess] = useState(false);
      const [refetch, setRefetch] = useState(false)
     const [partnerData, setPartnerData] = useState({});
     const {_id,availabilityTime, email, experienceLevel, location, name, patnerCount,profileimage, rating, studyMode,subject} = partnerData;
@@ -43,7 +44,8 @@ const DetailsPage = () => {
       }, [id, refetch])
    
     const handleSendRequest = () => {
-      axios.patch(`https://studymate-project-server.vercel.app/partners/${_id}`)
+      setSuccess(true);
+      axios.patch(`https://studymate-project-server.vercel.app/partners/${_id}`,newPartner)
       .then(data => {
         console.log(data.data);
         if (data.data.matchedCount) {
@@ -55,11 +57,22 @@ const DetailsPage = () => {
                     timer: 1500
                   });
                   setRefetch(!refetch);
-                  setLoading(false)
           
         }
+      
         
       })
+
+        
+        if (success) {
+                Swal.fire({
+                     icon: "error",
+                     text: "You have already sent a request to this partner.",
+                   });
+          
+        }
+
+
 
       axios.post('https://studymate-project-server.vercel.app/partnerCount', newPartner)
       .then(data => {

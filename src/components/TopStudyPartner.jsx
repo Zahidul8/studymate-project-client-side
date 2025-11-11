@@ -27,7 +27,7 @@ const TopStudyPartner = ({partner}) => {
     
     
 return (
-    <div className="bg-gradient-to-r from-[#8ABEB9] to-[#427A76] text-white rounded-2xl shadow-2xl p-6 hover:scale-104 transform transition duration-300">
+    <div className="bg-linear-to-r from-[#8ABEB9] to-[#427A76] text-white rounded-2xl shadow-2xl p-6 hover:scale-104 transform transition duration-300">
       {/* Profile Image */}
       <div className="flex justify-center mb-4">
         <img
