@@ -3,13 +3,15 @@ import { useParams } from 'react-router';
 import { FaMapMarkerAlt, FaStar, FaUserFriends } from "react-icons/fa";
 import { MdOutlineSchool, MdAccessTimeFilled, MdEmail } from "react-icons/md";
 import { GiLevelEndFlag } from "react-icons/gi";
-import axios from 'axios';
+// import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '../components/LoadingSpinner';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const DetailsPage = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
@@ -37,18 +39,18 @@ const DetailsPage = () => {
 
 
   useEffect(() => {
-    axios.get(`https://studymate-project-server.vercel.app/partners/${id}`)
+    axiosSecure.get(`/partners/${id}`)
       .then(data => {
         setPartnerData(data.data)
         setLoading(false)
       })
 
-  }, [id, refetch])
+  }, [id, refetch,axiosSecure])
 
   const handleSendRequest = (e) => {
     e.preventDefault();
     setSuccess(true);
-    axios.patch(`https://studymate-project-server.vercel.app/partners/${_id}`, newPartner)
+    axiosSecure.patch(`/partners/${_id}`, newPartner)
       .then(data => {
         console.log(data.data);
         if (data.data.matchedCount) {
@@ -84,7 +86,7 @@ const DetailsPage = () => {
 
 
 
-    axios.post('https://studymate-project-server.vercel.app/partnerCount', newPartner)
+    axiosSecure.post('/partnerCount', newPartner)
       .then(data => {
         console.log(data.data);
 

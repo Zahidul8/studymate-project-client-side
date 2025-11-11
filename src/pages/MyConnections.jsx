@@ -1,12 +1,14 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '../components/LoadingSpinner';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const MyConnections = () => {
 
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure()
   const [loading, setLoading] = useState(true);
   const modalRef = useRef();
   const [partnerData, setPartnerData] = useState([]);
@@ -15,7 +17,7 @@ const MyConnections = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://studymate-project-server.vercel.app/partnerCount?email=${user?.email}`)
+    axiosSecure.get(`/partnerCount?email=${user?.email}`)
       .then(data => {
         console.log(data.data);
         setPartnerData(data.data)
@@ -24,7 +26,7 @@ const MyConnections = () => {
       })
 
 
-  }, [user, refecth])
+  }, [user, refecth,axiosSecure])
 
 
 
@@ -41,7 +43,7 @@ const MyConnections = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://studymate-project-server.vercel.app/partnerCount/${id}`)
+        axiosSecure.delete(`/partnerCount/${id}`)
           .then(data => {
             console.log(data.data);
             if (data.data.deletedCount) {
@@ -75,7 +77,7 @@ const MyConnections = () => {
     console.log(subject, studyMode);
     const updatedData = { subject, studyMode };
 
-    axios.patch(`https://studymate-project-server.vercel.app/partnerCount/${selectedPartner._id}`, updatedData)
+    axiosSecure.patch(`/partnerCount/${selectedPartner._id}`, updatedData)
       .then(data => {
         console.log(data.data);
         if (data.data.matchedCount) {
@@ -105,7 +107,7 @@ const MyConnections = () => {
 
   return (
     <div className='my-10 bg-[#f9faff] rounded-3xl'>
-      <h2 className="auth-title md:hidden p-4 font-bold mb-6 text-[#0C2B4E]">My Partner Requests</h2>
+      <h2 className="auth-title md:hidden px-4 pt-4 font-bold text-[#0C2B4E]">My Partner Requests</h2>
       <div className="overflow-x-auto p-6 relative bg-[#f9faff] rounded-3xl  shadow-lg hidden md:block">
         <h2 className="auth-title font-bold mb-6 text-[#0C2B4E]">My Partner Requests</h2>
         <table className="min-w-full divide-y divide-gray-200">
@@ -123,7 +125,7 @@ const MyConnections = () => {
           {/* Table Body */}
 
           {
-            partnerData.map(data => <tbody key={data._id} className="bg-white divide-y divide-gray-100 rounded-b-xl">
+            partnerData.map(data => <tbody key={data._id} className="bg-secondary divide-y divide-gray-100 rounded-b-xl">
               <tr className="hover:bg-[#e6f0ff] transition-colors duration-200">
                 <td className="px-6 py-4 flex items-center gap-4">
                   <img
@@ -231,7 +233,7 @@ const MyConnections = () => {
           {partnerData.map((data) => (
             <div
               key={data._id}
-              className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition"
+              className="bg-secondary rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition"
             >
               <div className="flex items-center gap-3 mb-3">
                 <img

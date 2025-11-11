@@ -19,7 +19,7 @@ const Home = () => {
            </section>
 
         {/* top Study partners section  */}
-           <section  className='my-20'>
+           <section  className='my-10 md:my-20'>
 
             <h2 className='text-primary text-center section-title font-semibold mb-4'>Top Study Partners</h2>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>

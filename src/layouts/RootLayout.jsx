@@ -8,12 +8,12 @@ const RootLayout = () => {
 
     const navigation = useNavigation();
     return (
-        <div className='bg-base-1000'>
+        <div className=''>
             <header>
                 <Navbar></Navbar>
             </header>
 
-            <main className='max-w-11/12 xl:max-w-10/12 mx-auto min-h-[calc(100vh-351px)]'>
+            <main className='max-w-11/12 xl:max-w-10/12 mx-auto min-h-[calc(100vh-351px)] mt-30'>
             {
                 navigation.state === "loading"? <LoadingSpinner></LoadingSpinner>: <Outlet></Outlet>
             }

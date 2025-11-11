@@ -11,8 +11,8 @@
   default: true;
 
   --color-primary: #16476A; /* ok for all button and section heading*/
-  --color-secondary: teal;
-  --color-base-100: #F5E5E1; /* background */
+  --color-secondary: #F5F5F0;
+  --color-base-100: #C4E1E6; 
   --color-base-content: #0c0e1a; /* text */
 }
 
@@ -21,14 +21,19 @@
   prefersdark: true;
 
   --color-primary: #B87C4C; /* ok for all button and section heading*/
-  --color-secondary: #A78BFA;
-  --color-base-100: #0c0e1a; /* dark background */
+  --color-secondary: #BBDCE5;
+  --color-base-100: #09122C; /* dark background */
   --color-base-content: #ffffff; /* light text */
 }
 
 
 * {
   font-family: "Poppins", sans-serif;
+}
+ul  a.active{
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
 }
 
 .carousel-heading {

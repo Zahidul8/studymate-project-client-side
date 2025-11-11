@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router';
 import useAuth from '../hooks/useAuth';
 import { LuLogOut } from 'react-icons/lu';
 import { PuffLoader } from 'react-spinners';
+import { div } from 'framer-motion/client';
 
 const Navbar = () => {
   const { user, signOutUser, loading } = useAuth();
@@ -48,7 +49,8 @@ const Navbar = () => {
 
 
   return (
-    <div className="navbar bg-[#0C2B4E] shadow-sm px-4">
+   
+    <div className="navbar bg-[#0C2B4E] shadow-sm px-4 fixed top-0 z-10">
       <div className="navbar-start">
         <div className="dropdown ">
           <div tabIndex={0} role="button" className="btn btn-ghost text-white lg:hidden">
@@ -150,7 +152,10 @@ const Navbar = () => {
             </>
         }
       </div>
+    
+
     </div>
+
   );
 };
 

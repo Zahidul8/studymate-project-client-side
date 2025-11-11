@@ -3,9 +3,11 @@ import useAuth from '../hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '../components/LoadingSpinner';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const CreatePartnerProfile = () => {
     const {user} = useAuth();
+    const axiosSecure = useAxiosSecure();
     const handleCreatePartner = (e) => {
      
         e.preventDefault();
@@ -37,7 +39,7 @@ const CreatePartnerProfile = () => {
         }
 
  
-        axios.post('https://studymate-project-server.vercel.app/partners',newPartner)
+        axiosSecure.post('/partners',newPartner)
         .then(data => {
             console.log(data.data);
           
