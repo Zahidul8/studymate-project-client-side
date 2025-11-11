@@ -21,8 +21,8 @@ const Home = () => {
         {/* top Study partners section  */}
            <section  className='my-20'>
 
-            <h2 className='text-center text-4xl font-semibold mb-4'>Top Study Partners</h2>
-            <div className='grid grid-cols-3 gap-6'>
+            <h2 className='text-primary text-center section-title font-semibold mb-4'>Top Study Partners</h2>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
 
            {
                partnerData?.map(partner => <TopStudyPartner key={partner._id} partner={partner}></TopStudyPartner>)

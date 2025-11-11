@@ -18,17 +18,17 @@ const Testimonials = () => {
     //     })
     // },[])
   return (
-    <section className="bg-[#D6F4ED] py-12 px-6 rounded-2xl">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1A1A1A] mb-3">
+    <section className="bg-[#D6F4ED] py-12 px-4 sm:px-6 rounded-2xl shadow-2xl">
+      <h2 className="section-title font-bold text-center text-[#1A1A1A] mb-3">
         TESTIMONIALS
       </h2>
-      <p className="text-center text-gray-600 mb-10">
+      <p className="text-center text-gray-600 mb-18">
         Hear what our learners say about their study partners and experience.
       </p>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-3 gap-16 lg:gap-8  ">
         {/* Testimonial 1 */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl transition duration-300 relative">
+        <div className="bg-white   shadow-lg rounded-2xl py-6 px-4 sm:p-6  text-center hover:shadow-xl transition duration-300 relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 -top-10">
             <img
               src={partnerimage1}
@@ -37,7 +37,7 @@ const Testimonials = () => {
             />
           </div>
           <div className="pt-12">
-            <p className="text-gray-600 italic mb-4">
+            <p className="text-gray-600 italic text-[14px] sm:text-[16px] mb-4">
               “Studying with my partner helped me stay consistent and motivated.
               We shared goals, practiced quizzes, and improved together.”
             </p>
@@ -48,7 +48,7 @@ const Testimonials = () => {
           </div>
         </div>
         {/* Testimonial 2 */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl transition duration-300 relative">
+        <div className="bg-white shadow-lg rounded-2xl py-6 px-4 sm:p-6 text-center hover:shadow-xl transition duration-300 relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 -top-10">
             <img
               src={partnerimage2}
@@ -57,7 +57,7 @@ const Testimonials = () => {
             />
           </div>
           <div className="pt-12">
-            <p className="text-gray-600 italic mb-4">
+            <p className="text-gray-600 italic mb-4 text-[14px] sm:text-[16px]">
             “Finding a study partner through StudyMate made learning so much more fun! We kept each other accountable and celebrated every little progress together.”
             </p>
             <h3 className="text-lg font-semibold text-[#DAA520]">
@@ -67,7 +67,7 @@ const Testimonials = () => {
           </div>
         </div>
         {/* Testimonial 3 */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 text-center hover:shadow-xl transition duration-300 relative">
+        <div className="bg-white shadow-lg rounded-2xl py-6 px-4 sm:p-6 text-center hover:shadow-xl transition duration-300 relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 -top-10">
             <img
               src={partnerimage3}
@@ -76,7 +76,7 @@ const Testimonials = () => {
             />
           </div>
           <div className="pt-12">
-            <p className="text-gray-600 italic mb-4">
+            <p className="text-gray-600 italic mb-4 text-[14px] sm:text-[16px]">
               “I used to struggle staying focused alone, but with my StudyMate partner, studying feels easier and more organized. We plan sessions, share notes, and keep each other on track.”
             </p>
             <h3 className="text-lg font-semibold text-[#DAA520]">

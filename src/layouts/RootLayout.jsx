@@ -13,7 +13,7 @@ const RootLayout = () => {
                 <Navbar></Navbar>
             </header>
 
-            <main className='max-w-10/12 mx-auto min-h-[calc(100vh-351px)]'>
+            <main className='max-w-11/12 xl:max-w-10/12 mx-auto min-h-[calc(100vh-351px)]'>
             {
                 navigation.state === "loading"? <LoadingSpinner></LoadingSpinner>: <Outlet></Outlet>
             }

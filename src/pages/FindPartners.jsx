@@ -52,10 +52,10 @@ const FindPartners = () => {
     return (
         <div>
 
-            <h2 className='text-center mt-10 text-4xl font-semibold text-primary'>Find Your Study Partner</h2>
+            <h2 className='text-center mt-10 section-title  font-semibold text-primary'>Find Your Study Partner</h2>
             {/* Search and sort */}
 
-            <div className='mt-3 mb-10 flex  justify-between'>
+            <div className='mt-3 mb-10 flex flex-col-reverse sm:flex-row gap-6  justify-between items-center'>
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-primary m-1">
                         Sort By Rating
@@ -95,6 +95,7 @@ const FindPartners = () => {
                                     </g>
                                 </svg>
                                 <input type="search"
+                                className='bg-transparent'
                                     onChange={(e) => setSearchText(e.target.value)}
                                     name='search'
                                     placeholder="Search" />

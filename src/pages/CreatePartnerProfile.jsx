@@ -63,9 +63,9 @@ const CreatePartnerProfile = () => {
 
      return  (
       
-    <div className="max-w-4xl mx-auto bg-[#F8F9F7] shadow-xl rounded-2xl p-8 my-10 border border-[#E0E0E0]">
+    <div className="max-w-4xl mx-auto bg-[#F8F9F7] shadow-xl rounded-2xl p-4 sm:p-8 my-10 border border-[#E0E0E0]">
       {/* Header */}
-      <h2 className="text-3xl font-bold text-center text-[#1A1A1A] mb-2">
+      <h2 className="section-title font-bold text-center text-[#1A1A1A] mb-2">
         Create Study Partner Profile
       </h2>
       <p className="text-center text-gray-600 mb-8">

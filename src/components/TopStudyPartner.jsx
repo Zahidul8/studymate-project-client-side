@@ -37,10 +37,10 @@ return (
         />
       </div>
       {/* Name */}
-      <h3 className="text-2xl font-bold text-center mb-2">{name}</h3>
+      <h3 className="top-partner-title font-bold text-center mb-2">{name}</h3>
       {/* Subject and Skill */}
-      <p className="text-center mb-3">
-        <span className="font-semibold">Subject:</span> {subject} | {experienceLevel}
+      <p className="text-center mb-3 text-[14px] md:text-[16px]">
+        <span className="font-semibold ">Subject:</span> {subject} | {experienceLevel}
       </p>
       {/* Ratings */}
       <div className="flex justify-center items-center mb-5 space-x-1">
