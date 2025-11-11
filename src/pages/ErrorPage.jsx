@@ -5,6 +5,7 @@ import errorImage from '../assets/error.jpg';
 const ErrorPage = () => {
     return (
     <div className="flex items-center justify-center py-10 bg-blue-100 px-4">
+      <title>StudyMate-Error-404</title>
       <div className="bg-white rounded-xl shadow-lg p-10 text-center max-w-4xl w-full">
         {/* Image */}
         <img src={errorImage} alt="404 Not Found" className="mx-auto mb-6 " />

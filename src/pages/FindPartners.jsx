@@ -51,6 +51,7 @@ const FindPartners = () => {
 
     return (
         <div>
+            <title>StudyMate-Find Partner</title>
 
             <h2 className='text-center mt-10 section-title  font-semibold text-primary'>Find Your Study Partner</h2>
             {/* Search and sort */}

@@ -1,6 +1,8 @@
 import React from "react";
 import { BsInstagram, BsTwitterX } from "react-icons/bs";
 import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
+import logo from '../assets/logo.jpg';
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -9,9 +11,10 @@ const Footer = () => {
 
       {/* Project Info */}
       <nav>
-        <h6 className="footer-title">
+        <div className="text-gray-300 flex items-center gap-2">
+          <Link to='/'><img src={logo} className="w-[55px] h-[55px] rounded-full" alt="" /></Link>
           <span className="text-2xl font-bold">StudyMate</span> — Find Your Perfect Study Partner
-        </h6>
+        </div>
         <p className="max-w-[450px] text-sm ">
           StudyMate helps students connect with the perfect study partners. Find classmates who share your goals,
           subjects, and schedule — making learning more engaging, productive, and fun.
@@ -66,7 +69,7 @@ const Footer = () => {
 
               </div>
       
-      <div className="footer-center text-center mt-8 w-full border-t border-base-100 text-white pt-4 text-sm ">
+      <div className="footer-center text-center mt-8 pb-4 w-full border-t border-base-100 text-white pt-4 text-sm ">
         © 2025 All rights reserved.
       </div>
     </footer>

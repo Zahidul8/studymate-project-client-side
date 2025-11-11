@@ -108,6 +108,7 @@ const DetailsPage = () => {
   return (
 
     <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-md p-8 my-10 ">
+      <title>StudyMate-Details</title>
       {/* Header section */}
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
         {/* Profile image */}

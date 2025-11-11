@@ -107,6 +107,7 @@ const MyConnections = () => {
 
   return (
     <div className='my-10 bg-[#f9faff] rounded-3xl'>
+      <title>StudyMate-My Connections</title>
       <h2 className="auth-title md:hidden px-4 pt-4 font-bold text-[#0C2B4E]">My Partner Requests</h2>
       <div className="overflow-x-auto p-6 relative bg-[#f9faff] rounded-3xl  shadow-lg hidden md:block">
         <h2 className="auth-title font-bold mb-6 text-[#0C2B4E]">My Partner Requests</h2>

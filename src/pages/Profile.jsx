@@ -7,6 +7,7 @@ const Profile = () => {
 
   return (
     <div className="flex justify-center items-center my-10">
+      <title>StudyMate-Profile</title>
       <div className="w-80 bg-white rounded-3xl shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:-translate-y-1">
         {/* Profile Image */}
         <div className="relative">

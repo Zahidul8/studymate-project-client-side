@@ -80,6 +80,7 @@ const Login = () => {
   }
   return (
     <div className="flex items-center justify-center">
+      <title>StudyMate-Login</title>
       <div className="w-full my-10  max-w-md bg-white shadow-2xl rounded-2xl p-4 sm:p-8">
         {/* Title */}
         <h2 className="auth-title font-bold text-center text-gray-800 mb-6">

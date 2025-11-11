@@ -1,6 +1,6 @@
 import React  from 'react';
 import useAuth from '../hooks/useAuth';
-import axios from 'axios';
+// import axios from 'axios';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '../components/LoadingSpinner';
 import useAxiosSecure from '../hooks/useAxiosSecure';
@@ -66,6 +66,7 @@ const CreatePartnerProfile = () => {
      return  (
       
     <div className="max-w-4xl mx-auto bg-[#F8F9F7] shadow-xl rounded-2xl p-4 sm:p-8 my-10 border border-[#E0E0E0]">
+      <title>StudyMate-Create Partner Profile</title>
       {/* Header */}
       <h2 className="section-title font-bold text-center text-[#1A1A1A] mb-2">
         Create Study Partner Profile

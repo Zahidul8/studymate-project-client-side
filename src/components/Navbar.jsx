@@ -3,7 +3,9 @@ import { Link, NavLink } from 'react-router';
 import useAuth from '../hooks/useAuth';
 import { LuLogOut } from 'react-icons/lu';
 import { PuffLoader } from 'react-spinners';
-import { div } from 'framer-motion/client';
+import logo from '../assets/logo.jpg';
+
+
 
 const Navbar = () => {
   const { user, signOutUser, loading } = useAuth();
@@ -93,7 +95,9 @@ const Navbar = () => {
              {links}
           </ul>
         </div>
-        <Link to='/' className=" text-white font-bold text-xl">StudyMate</Link>
+        <Link to='/' className="flex  items-center gap-2 text-white font-bold ">
+        <img src={logo} className='w-[30px] h-[30px] sm:w-[55px] sm:h-[55px] rounded-full' alt="" /> <span className='text-[14px] sm:text-xl'>StudyMate</span>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -142,8 +146,8 @@ const Navbar = () => {
                 </figure>
               </div>
               <ul tabIndex="-1" className="dropdown-content menu bg-gray-600  rounded-box z-1 w-52 p-2 shadow-sm">
-                <li><Link to='/profile'>Profile</Link></li>
-                <li><button onClick={handleSignOut}> <LuLogOut />Logout</button></li>
+                <li><Link className='text-white' to='/profile'>Profile</Link></li>
+                <li><button className='text-white' onClick={handleSignOut}> <LuLogOut />Logout</button></li>
 
               </ul>
             </div> : <>
