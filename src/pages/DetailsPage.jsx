@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import { FaMapMarkerAlt, FaStar, FaUserFriends } from "react-icons/fa";
 import { MdOutlineSchool, MdAccessTimeFilled, MdEmail } from "react-icons/md";
@@ -9,92 +9,102 @@ import Swal from 'sweetalert2';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const DetailsPage = () => {
-  const {user} = useAuth();
-     const {id} = useParams();
-     const [loading, setLoading] = useState(true);
-     const [success, setSuccess] = useState(false);
-     const [refetch, setRefetch] = useState(false)
-    const [partnerData, setPartnerData] = useState({});
-    const {_id,availabilityTime, email, experienceLevel, location, name, patnerCount,profileimage, rating, studyMode,subject} = partnerData;
+  const { user } = useAuth();
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [success, setSuccess] = useState(false);
+  const [refetch, setRefetch] = useState(false);
+  const modalRef = useRef();
+  const messageRef = useRef();
+  const [partnerData, setPartnerData] = useState({});
+  const { _id, availabilityTime, email, experienceLevel, location, name, patnerCount, profileimage, rating, studyMode, subject } = partnerData;
 
-    const newPartner = {
-        name,
-        profileimage,
-        subject, 
-        studyMode,
-        availabilityTime,
-        location,
-        experienceLevel,
-        rating,
-        patnerCount,
-        email,
-        requesterEmail: user?.email
-        
-      }
+  const newPartner = {
+    name,
+    profileimage,
+    subject,
+    studyMode,
+    availabilityTime,
+    location,
+    experienceLevel,
+    rating,
+    patnerCount,
+    email,
+    requesterEmail: user?.email
 
-   
-      
-      useEffect(() => {
-          axios.get(`https://studymate-project-server.vercel.app/partners/${id}`)
-          .then(data => {
-            setPartnerData(data.data)
-            setLoading(false)
-          })
+  }
 
-      }, [id, refetch])
-   
-    const handleSendRequest = () => {
-      setSuccess(true);
-      axios.patch(`https://studymate-project-server.vercel.app/partners/${_id}`,newPartner)
+
+
+  useEffect(() => {
+    axios.get(`https://studymate-project-server.vercel.app/partners/${id}`)
+      .then(data => {
+        setPartnerData(data.data)
+        setLoading(false)
+      })
+
+  }, [id, refetch])
+
+  const handleSendRequest = (e) => {
+    e.preventDefault();
+    setSuccess(true);
+    axios.patch(`https://studymate-project-server.vercel.app/partners/${_id}`, newPartner)
       .then(data => {
         console.log(data.data);
         if (data.data.matchedCount) {
-             Swal.fire({
-                    position: "top-center",
-                    icon: "success",
-                    title: "Request sent successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                  setRefetch(!refetch);
-          
+          messageRef.current.value = "";
+          modalRef.current.close();
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Request sent successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setRefetch(!refetch);
+
+
         }
-      
-        
+
+
       })
 
-        
-        if (success) {
-                Swal.fire({
-                     icon: "error",
-                     text: "You have already sent a request to this partner.",
-                   });
-          
-        }
+
+    if (success) {
+      messageRef.current.value = "";
+      modalRef.current.close();
+      Swal.fire({
+        icon: "error",
+        text: "You have already sent a request to this partner.",
+      });
 
 
 
-      axios.post('https://studymate-project-server.vercel.app/partnerCount', newPartner)
+    }
+
+
+
+    axios.post('https://studymate-project-server.vercel.app/partnerCount', newPartner)
       .then(data => {
         console.log(data.data);
-        
+
       })
 
-      
 
 
 
-    }
+
+  }
 
 
-    if (loading) {
-        return <LoadingSpinner></LoadingSpinner>
-        
-    }
+  if (loading) {
+    return <LoadingSpinner></LoadingSpinner>
 
-    
-    return (
-        
+  }
+
+
+  return (
+
     <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-md p-8 mt-10 ">
       {/* Header section */}
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
@@ -126,9 +136,31 @@ const DetailsPage = () => {
 
         {/* Button */}
         <div className="mt-4 md:mt-0">
-          <button onClick={handleSendRequest} className="btn btn-primary bg-indigo-600 hover:bg-indigo-700 border-none px-6 rounded-full text-white transition-all duration-200">
+          <button onClick={() => modalRef.current.showModal()} className="btn btn-primary bg-indigo-600 hover:bg-indigo-700 border-none px-6 rounded-full text-white transition-all duration-200">
             Send Partner Request
           </button>
+
+          {/* Open the modal using document.getElementById('ID').showModal() method */}
+          <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
+            <div className="modal-box">
+              <h3 className="text-xl font-semibold mb-2">Send a Message to {partnerData.name}</h3>
+              <form onSubmit={handleSendRequest}>
+                <textarea
+                  ref={messageRef}
+                  className="textarea textarea-bordered w-full resize-none"
+                  placeholder="Write a short message..."
+                  required
+                ></textarea>
+                <button className='btn btn-primary mt-6 mx-auto block'>Send</button>
+              </form>
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn">Close</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
         </div>
       </div>
 
@@ -178,7 +210,7 @@ const DetailsPage = () => {
         </div>
       </div>
     </div>
-    
+
   );
 };
 

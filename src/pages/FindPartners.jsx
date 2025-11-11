@@ -35,7 +35,6 @@ const FindPartners = () => {
     }
 
 
-    // first we need to get search text 
     const handleSortedPartner = (order) => {
         setLoading(true);
         axios.get(`https://studymate-project-server.vercel.app/search?search=${searchText}&sort=${order}`)
