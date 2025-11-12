@@ -134,7 +134,7 @@ const DetailsPage = () => {
             <FaMapMarkerAlt className="text-indigo-600" />
             {location}
           </p>
-          <p className='flex gap-2 items-center text-gray-500'> <MdEmail className='text-indigo-600' /> {email}</p>
+          <p className='flex gap-2 items-center text-gray-500 '> <MdEmail className='text-indigo-600' /> {email}</p>
         </div>
 
         {/* Button */}

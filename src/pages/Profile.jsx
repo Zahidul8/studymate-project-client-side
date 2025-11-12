@@ -10,14 +10,14 @@ const Profile = () => {
       <title>StudyMate-Profile</title>
       <div className="w-80 bg-white rounded-3xl shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:-translate-y-1">
         {/* Profile Image */}
-        <div className="relative">
+        <div className="relative my-10">
           <img
             src={
               user?.photoURL ||
               "https://i.ibb.co/Y3TjzKL/default-avatar-profile.jpg"
             }
             alt="Profile"
-            className="w-full h-80 object-cover rounded-b-none"
+            className="w-60 h-60 mx-auto object-cover rounded-full"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition duration-500 rounded-t-3xl"></div>
         </div>

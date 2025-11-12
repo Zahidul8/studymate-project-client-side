@@ -40,7 +40,7 @@ const HowItWorks = () => {
             {/* Step 2 */}
             <div className="flex items-start gap-4 hover:bg-white hover:shadow-md transition-all duration-300 p-3 rounded-xl">
               <div className="bg-white p-3 rounded-full shadow-md">
-                <FaSearch className="text-icon-text-style text-purple-600" />
+                <FaSearch className="icon-text-style text-purple-600" />
               </div>
               <div>
                 <h3 className="font-semibold text-lg text-gray-800">2. Find Study Partners</h3>

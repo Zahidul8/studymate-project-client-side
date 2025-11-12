@@ -49,7 +49,7 @@ const MyConnections = () => {
             if (data.data.deletedCount) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your request had been deleted.",
+                text: "Your request has been deleted.",
                 icon: "success"
               });
               const remainingData = partnerData.filter(data => data._id !== id);

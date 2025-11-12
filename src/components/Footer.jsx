@@ -11,9 +11,11 @@ const Footer = () => {
 
       {/* Project Info */}
       <nav>
-        <div className="text-gray-300 flex items-center gap-2">
+        <div className="text-gray-300 flex flex-col md:flex-row md:items-center gap-2">
           <Link to='/'><img src={logo} className="w-[55px] h-[55px] rounded-full" alt="" /></Link>
-          <span className="text-2xl font-bold">StudyMate</span> — Find Your Perfect Study Partner
+         <p>
+           <span className="text-2xl font-bold">StudyMate</span> — Find Your Perfect Study Partner
+         </p>
         </div>
         <p className="max-w-[450px] text-sm ">
           StudyMate helps students connect with the perfect study partners. Find classmates who share your goals,
@@ -70,7 +72,7 @@ const Footer = () => {
               </div>
       
       <div className="footer-center text-center mt-8 pb-4 w-full border-t border-base-100 text-white pt-4 text-sm ">
-        © 2025 All rights reserved.
+        StudyMate © 2025 All rights reserved.
       </div>
     </footer>
   );

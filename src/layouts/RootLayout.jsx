@@ -3,12 +3,17 @@ import { Outlet, useNavigation } from 'react-router';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import LoadingSpinner from '../components/LoadingSpinner';
+import ScrollToTop from '../components/ScrollToTop';
 
 const RootLayout = () => {
 
     const navigation = useNavigation();
     return (
         <div className=''>
+
+            {/* For navigate to top while changing routes  */}
+            <ScrollToTop></ScrollToTop>
+
             <header>
                 <Navbar></Navbar>
             </header>

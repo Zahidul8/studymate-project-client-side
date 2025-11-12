@@ -3,7 +3,7 @@ Project Name: StudyMate — Find Your Perfect Study Partner
 Project client side URL: https://studymate-project-client-app.netlify.app
 
 
-✨ StudyMate – Website Features (Improved Version)
+✨ StudyMate – Website Features
 
 ● Engaging Learning Platform: A collaborative space designed to make learning more interactive and enjoyable.
 

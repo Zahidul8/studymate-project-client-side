@@ -59,11 +59,11 @@ const FindPartners = () => {
             <div className='mt-3 mb-10 flex flex-col-reverse sm:flex-row gap-6  justify-between items-center'>
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-primary m-1">
-                        Sort By Rating
+                        Sort By Experience
                     </div>
                     <ul
                         tabIndex={0}
-                        className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                        className="dropdown-content menu bg-base-100 rounded-box z-1  w-52 p-2 shadow"
                     >
                         <li>
                             <button onClick={() => handleSortedPartner("asc")}>
