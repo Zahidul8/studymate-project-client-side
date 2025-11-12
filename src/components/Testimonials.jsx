@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import partnerimage1 from '../assets/partnerimage1.jpg'
 import partnerimage2 from '../assets/partnerimage2.jpg'
 import partnerimage3 from '../assets/partnerimage3.jpg'
 
 const Testimonials = () => {
     
-    
-
-    // const [partnerData, setPartnerData] = useState([]);
-    // console.log(partnerData);
-
-    // useEffect(() => {
-    //     fetch('https://studymate-project-server.vercel.app/reviewPartner')
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setPartnerData(data);
-    //     })
-    // },[])
   return (
     <section className="bg-[#D6F4ED] py-12 px-4 sm:px-6 rounded-2xl shadow-2xl">
       <h2 className="section-title font-bold text-center text-[#1A1A1A] mb-3">

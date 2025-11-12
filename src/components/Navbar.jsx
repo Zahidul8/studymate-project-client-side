@@ -69,9 +69,9 @@ const Navbar = () => {
               <input
                 type="checkbox"
                 onChange={handleThemeToggle}
-                defaultChecked={localStorage.getItem('theme') === 'dark'}
+                checked={theme === 'dark'}
                 className="theme-controller"
-                value="dark" />
+                 />
 
               {/* sun icon */}
               <svg
@@ -113,9 +113,9 @@ const Navbar = () => {
           <input
             type="checkbox"
             onChange={handleThemeToggle}
-            defaultChecked={localStorage.getItem('theme') === 'dark'}
+            checked={theme === 'dark'}
             className="theme-controller"
-            value="dark" />
+             />
 
           {/* sun icon */}
           <svg

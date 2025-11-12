@@ -99,7 +99,7 @@ const FindPartners = () => {
                                 className='bg-transparent'
                                     onChange={(e) => setSearchText(e.target.value)}
                                     name='search'
-                                    placeholder="Search" />
+                                    placeholder="Search with subject" />
                             </label>
                             <button className="btn btn-primary join-item">Search</button>
                         </div>
