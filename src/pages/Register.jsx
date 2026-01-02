@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { imageUploadCloudinary } from "../utils";
 
 const Register = () => {
     const [toggle, setToggle] = useState();
@@ -14,76 +15,148 @@ const Register = () => {
   const navigate = useNavigate();
 
 
-    const handleCreateUser = (e) => {
-      e.preventDefault();
-      const displayName = e.target.name.value;
-      const email = e.target.email.value;
-      const photoURl = e.target.photo.value;
-      const password = e.target.password.value;
-      console.log('create user', displayName, email, photoURl, password);
+    // const handleCreateUser = (e) => {
+    //   e.preventDefault();
+    //   const displayName = e.target.name.value;
+    //   const email = e.target.email.value;
+    //   const imageFile = e.target.photo.files[0];
+    //   const password = e.target.password.value;
+    //   console.log('create user', displayName, email, password);
     
-      const hasUppercase = /[A-Z]/;
-      const hasLowercase =  /[a-z]/;
+    //   const hasUppercase = /[A-Z]/;
+    //   const hasLowercase =  /[a-z]/;
 
-      setError('')
-      if (password.length < 6) {
-        setError('Password must be at least 6 characters long.')
-        return 
-      } else if (!hasUppercase.test(password)) {
-        setError("Password must contain at least one uppercase letter.")
-        return;
-      } else if (!hasLowercase.test(password)) {
-        setError("Password must contain at least one lowercase letter.")
-        return;
-      }
+    //   setError('')
+    //   if (password.length < 6) {
+    //     setError('Password must be at least 6 characters long.')
+    //     return 
+    //   } else if (!hasUppercase.test(password)) {
+    //     setError("Password must contain at least one uppercase letter.")
+    //     return;
+    //   } else if (!hasLowercase.test(password)) {
+    //     setError("Password must contain at least one lowercase letter.")
+    //     return;
+    //   }
 
 
-      createUser(email, password)
-      .then(result => {
-       updataUserProfile(displayName, photoURl)
-       .then()
-       .catch(error => {
-        console.log(error.message);
+    //   createUser(email, password)
+    //   .then(result => {
+    //    updataUserProfile(displayName, photoURl)
+    //    .then()
+    //    .catch(error => {
+    //     console.log(error.message);
         
-       })
-        signOutUser()
-        .then()
-        .catch(error => {
-          console.log(error.message);
+    //    })
+    //     signOutUser()
+    //     .then()
+    //     .catch(error => {
+    //       console.log(error.message);
           
-        })
-        e.target.reset();
-         Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "User registered successfully",
-          showConfirmButton: false,
-          timer: 2000
-        });
-        navigate('/');
+    //     })
+    //     e.target.reset();
+    //      Swal.fire({
+    //       position: "top-center",
+    //       icon: "success",
+    //       title: "User registered successfully",
+    //       showConfirmButton: false,
+    //       timer: 2000
+    //     });
+    //     navigate('/');
         
-      })
-      .catch(error => {
-        console.log(error.message);
-        let message = '';
-        if (error.code === "auth/email-already-in-use") {
-          message = "This email is already registered. Please use a different email or try logging in."
-        } else {
-          message = "Registration failed. Please try again later.";
-        }
-           Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: message,
-        });
+    //   })
+    //   .catch(error => {
+    //     console.log(error.message);
+    //     let message = '';
+    //     if (error.code === "auth/email-already-in-use") {
+    //       message = "This email is already registered. Please use a different email or try logging in."
+    //     } else {
+    //       message = "Registration failed. Please try again later.";
+    //     }
+    //        Swal.fire({
+    //       icon: "error",
+    //       title: "Oops...",
+    //       text: message,
+    //     });
         
         
-      })
-       .finally(() => {
-        setLoading(false);
-      })
+    //   })
+    //    .finally(() => {
+    //     setLoading(false);
+    //   })
       
+    // }
+
+    const handleCreateUser = async (e) => {
+  e.preventDefault();
+
+  const displayName = e.target.name.value;
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  const imageFile = e.target.photo.files[0];
+
+  const hasUppercase = /[A-Z]/;
+  const hasLowercase = /[a-z]/;
+
+  setError("");
+
+  if (password.length < 6) {
+    setError("Password must be at least 6 characters long.");
+    return;
+  } else if (!hasUppercase.test(password)) {
+    setError("Password must contain at least one uppercase letter.");
+    return;
+  } else if (!hasLowercase.test(password)) {
+    setError("Password must contain at least one lowercase letter.");
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    // 1️⃣ Upload image to Cloudinary (if user selected one)
+    let photoURL = "";
+    if (imageFile) {
+      photoURL = await imageUploadCloudinary(imageFile);
     }
+
+    // 2️⃣ Create user
+    const result = await createUser(email, password);
+
+    // 3️⃣ Update profile
+    await updataUserProfile(displayName, photoURL);
+
+    // 4️⃣ Optional sign out
+    await signOutUser();
+
+    e.target.reset();
+
+    Swal.fire({
+      position: "top-center",
+      icon: "success",
+      title: "User registered successfully",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+
+    navigate("/");
+  } catch (error) {
+    console.error(error.message);
+
+    let message = "Registration failed. Please try again later.";
+    if (error.code === "auth/email-already-in-use") {
+      message =
+        "This email is already registered. Please use a different email or try logging in.";
+    }
+
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: message,
+    });
+  } finally {
+    setLoading(false);
+  }
+};
 
 
   const handleSignInWithGoogle = () => {
@@ -167,10 +240,10 @@ const Register = () => {
               <span className="label-text text-gray-800 font-semibold">Photo URL</span>
             </label>
             <input
-              type="text"
+              type="file"
               name='photo'
               placeholder="Enter your photo URL"
-              className="input input-bordered w-full border-gray-600 text-gray-800 bg-white"
+              className="file-input input-bordered w-full border-gray-600 text-gray-800 bg-white"
             />
           </div>
 

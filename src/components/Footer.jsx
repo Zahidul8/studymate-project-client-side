@@ -1,78 +1,78 @@
 import React from "react";
 import { BsInstagram, BsTwitterX } from "react-icons/bs";
 import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
-import logo from '../assets/logo.jpg';
+import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import logo from "../assets/logo.jpg";
 import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer >
-        <div className="footer mx-auto sm:footer-horizontal max-w-6xl text-white p-10 ">
+    <footer className="">
+      <div className="footer mx-auto sm:footer-horizontal max-w-6xl text-white p-10">
 
-      {/* Project Info */}
-      <nav>
-        <div className="text-gray-300 flex flex-col md:flex-row md:items-center gap-2">
-          <Link to='/'><img src={logo} className="w-[55px] h-[55px] rounded-full" alt="" /></Link>
-         <p>
-           <span className="text-2xl font-bold">StudyMate</span> — Find Your Perfect Study Partner
-         </p>
-        </div>
-        <p className="max-w-[450px] text-sm ">
-          StudyMate helps students connect with the perfect study partners. Find classmates who share your goals,
-          subjects, and schedule — making learning more engaging, productive, and fun.
-        </p>
-      </nav>
+        {/* Project Info */}
+        <nav>
+          <div className="text-gray-300 flex flex-col md:flex-row md:items-center gap-2">
+            <Link to="/">
+              <img src={logo} className="w-[55px] h-[55px] rounded-full" alt="StudyMate Logo" />
+            </Link>
+            <p>
+              <span className="text-2xl font-bold">StudyMate</span> — Find Your Perfect Study Partner
+            </p>
+          </div>
 
-     
-      <nav>
-        <h6 className="footer-title">Company</h6>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-      </nav>
+          <p className="max-w-[450px] text-sm mt-2">
+            StudyMate helps students connect with compatible study partners.
+            Learn together, share resources, and stay motivated throughout your academic journey.
+          </p>
+        </nav>
 
-      
-      <nav>
-        <h6 className="footer-title">Social</h6>
-        <div className="grid grid-flow-col gap-4">
-          {/* Twitter */}
-         <a
-          href="https://twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className=""
-          >
-          <BsTwitterX size={25} />
-        </a>
+        {/* Quick Links */}
+        <nav>
+          <h6 className="footer-title">Explore</h6>
+          <Link to="/aboutUs" className="link link-hover">About Us</Link>
+          <Link to="/findPartners" className="link link-hover">Find Study Partner</Link>
+          <Link to="/resources" className="link link-hover">Study Resources</Link>
+        </nav>
 
-         
-          <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className=" bg-transparent"
-          >
-            <BsInstagram size={25} />
-         
-        </a>
+    
+        {/* Contact Info */}
+        <nav>
+          <h6 className="footer-title">Contact</h6>
+          <p className="flex items-center gap-2 text-sm">
+            <MdEmail /> support@studymate.com
+          </p>
+          <p className="flex items-center gap-2 text-sm">
+            <MdPhone /> +880 1234-567890
+          </p>
+          <p className="flex items-center gap-2 text-sm">
+            <MdLocationOn /> Dhaka, Bangladesh
+          </p>
+        </nav>
 
-     
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-          <FaFacebook size={25} />
-            
-          </a>
+        {/* Social */}
+        <nav>
+          <h6 className="footer-title">Social</h6>
+          <div className="grid grid-flow-col gap-4">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <BsTwitterX size={22} />
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <BsInstagram size={22} />
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <FaFacebook size={22} />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <FaLinkedinIn size={22} />
+            </a>
+          </div>
+        </nav>
+      </div>
 
-          
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-          <FaLinkedinIn size={25} />
-           
-          </a>
-        </div>
-      </nav>
-
-              </div>
-      
-      <div className="footer-center text-center mt-8 pb-4 w-full border-t border-base-100 text-white pt-4 text-sm ">
-        StudyMate © 2025 All rights reserved.
+      {/* Bottom bar */}
+      <div className="footer-center text-center w-full border-t border-white/20 text-gray-300 py-4 text-sm">
+        © 2025 StudyMate — All rights reserved.
       </div>
     </footer>
   );

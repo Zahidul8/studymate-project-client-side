@@ -66,12 +66,12 @@ const Home = () => {
            </section>
 
            {/*faq section */}
-           <section className='my-20 sm:my-0'>
+           <section className='my-20 md:my-0'>
             <FAQ></FAQ>
            </section>
 
             {/* newsLsterCTA section  */}
-           <section className='my-20 sm:my-0'>
+           <section className='my-20 md:my-0'>
             <NewsletterCTA></NewsletterCTA>
            </section>
 

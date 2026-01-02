@@ -113,7 +113,7 @@ const FindPartners = () => {
                     <h2 className='text-center text-4xl font-semibold text-primary'>No study partner found</h2>
                     <button onClick={() => setRefetch(!refecth)} className='btn btn-primary my-10'>See all</button >
                 </div> : <section className='my-10'>
-                    <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                    <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                         {
                             partnerData.map(data => <FindPartnerCard key={data._id} data={data}></FindPartnerCard>)
                         }

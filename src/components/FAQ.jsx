@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { faqData } from "../utils/resourceData";
+import { faqData } from "../utils";
 
 const FAQItem = ({ faq, isOpen, onClick }) => {
   return (

@@ -4,61 +4,71 @@ import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '../components/LoadingSpinner';
 import useAxiosSecure from '../hooks/useAxiosSecure';
+import { imageUploadCloudinary } from '../utils';
 
 const CreatePartnerProfile = () => {
     const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
-    const handleCreatePartner = (e) => {
-     
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const profileimage = form.profileimage.value;
-        const subject = form.subject.value;
-        const studyMode = form.studyMode.value;
-        const availabilityTime = form.availability.value;
-        const location = form.location.value;
-        const experienceLevel = form.experienceLevel.value;
-        const rating = Number(form.rating.value);
-        const patnerCount = Number(form.partnerCount.value);
-        const email = form.email.value;
+
+    const handleCreatePartner = async (e) => {
+  e.preventDefault();
+  const form = e.target;
+
+  const name = form.name.value;
+  const subject = form.subject.value;
+  const studyMode = form.studyMode.value;
+  const availabilityTime = form.availability.value;
+  const location = form.location.value;
+  const experienceLevel = form.experienceLevel.value;
+  const rating = Number(form.rating.value);
+  const partnerCount = Number(form.partnerCount.value);
+  const email = form.email.value;
+  const imageFile = form.profileimage.files[0];
+
+  try {
     
-        console.log('partner created',name, profileimage, subject, studyMode, availabilityTime, location, experienceLevel, rating, patnerCount, email);
-        
-        const newPartner = {
-            name,
-            profileimage,
-            subject,
-            studyMode,
-            availabilityTime, 
-            location,
-            experienceLevel,
-            rating,
-            patnerCount,
-            email
-        }
+    let profileImageURL = "";
+    if (imageFile) {
+      profileImageURL = await imageUploadCloudinary(imageFile);
+    }
 
  
-        axiosSecure.post('/partners',newPartner)
-        .then(data => {
-            console.log(data.data);
-          
-            if (data.data.insertedId) {
-                  Swal.fire({
-                          position: "top-center",
-                          icon: "success",
-                          title: "Profile created successfully",
-                          showConfirmButton: false,
-                          timer: 2000
-                        });
-                        e.target.reset();
-                
-            }
-            
-        })
+    const newPartner = {
+      name,
+      profileimage: profileImageURL,
+      subject,
+      studyMode,
+      availabilityTime,
+      location,
+      experienceLevel,
+      rating,
+      partnerCount,
+      email,
+    };
 
+    // 3️⃣ Save to backend
+    const res = await axiosSecure.post("/partners", newPartner);
 
+    if (res.data.insertedId) {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Profile created successfully",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      form.reset();
     }
+  } catch (error) {
+    console.error(error);
+    Swal.fire({
+      icon: "error",
+      title: "Something went wrong",
+      text: "Failed to create partner profile. Please try again.",
+    });
+  }
+};
+
 
 
    
@@ -94,14 +104,14 @@ const CreatePartnerProfile = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Profile Image URL
+              Profile Image
             </label>
             <input
-              type="url"
+              type="file"
               name="profileimage"
               placeholder="Paste your profile image link"
               required
-              className="w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
+              className="file-input w-full px-4 py-2 border border-gray-300 text-gray-600 rounded-lg focus:ring-2 focus:ring-[#DAA520] outline-none"
             />
           </div>
         </div>

@@ -12,7 +12,7 @@ const FindPartnerCard = ({ data }) => {
         <img
           src={profileimage}
           alt={name}
-          className=" w-full max-h-[336px] object-cover"
+          className="w-full h-full md:max-h-[250px] object-cover"
         />
         <div className="absolute top-4 right-3 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
           {experienceLevel}

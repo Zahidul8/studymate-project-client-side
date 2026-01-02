@@ -11,6 +11,8 @@ import Profile from "../pages/Profile";
 import PrivateRouter from "./PrivateRouter";
 import ErrorPage from "../pages/ErrorPage";
 import Resources from "../pages/Resources";
+import AboutUs from "../pages/AboutUs";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: '/resources',
                 Component: Resources,
+            },
+            {
+                path: '/aboutUs',
+                Component: AboutUs,
             },
             {
                 path: '/login',
@@ -52,9 +58,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/DetailsPage/:id',
-                element: <PrivateRouter>
-                    <DetailsPage></DetailsPage>
-                </PrivateRouter>,
+                element:<DetailsPage></DetailsPage>
             },
             {
                 path: '/profile',
@@ -66,6 +70,19 @@ const router = createBrowserRouter([
                 path:"/*",
                 Component: ErrorPage,
             }
+        ]
+    },
+    {
+         path:'/dashboard', 
+        element: <PrivateRouter>
+            <DashboardLayout></DashboardLayout>
+        </PrivateRouter>,
+        children:[
+          {
+            index:true,
+            Component: Profile
+          }
+
         ]
     }
 ])

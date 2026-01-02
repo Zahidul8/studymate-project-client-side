@@ -1,11 +1,11 @@
 import React from "react";
-import { resourcesData } from "../utils/resourceData";
+import { resourcesData } from "../utils";
 
 
 
 const Resources = () => {
   return (
-    <div className="min-h-screen bg-base-100  pt-24 pb-10">
+    <div className="min-h-screen bg-base-100 pb-10">
       <div className=" ">
         <h1 className="text-3xl font-bold mb-2 text-center">
           Study Resources

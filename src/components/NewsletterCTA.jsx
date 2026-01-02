@@ -15,7 +15,7 @@ const NewsletterCTA = () => {
   };
 
   return (
-    <section className="min-h-[400px] flex items-center justify-center px-4 py-16  bg-blue-50">
+    <section className="min-h-[400px] flex items-center justify-center  bg-blue-50">
       <div className=" w-full bg-white rounded-2xl shadow-lg p-8 flex flex-col md:flex-row items-center gap-8">
         {/* Left side: text & form */}
         <div className="flex-1 text-center md:text-left">

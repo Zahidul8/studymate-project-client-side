@@ -15,6 +15,7 @@ const Navbar = () => {
     <li className='text-white'><NavLink to='/'>Home</NavLink></li>
     <li className='text-white'><NavLink to='/findPartners'>Find Partners</NavLink></li>
     <li className='text-white'><NavLink to='/resources'>Resources</NavLink></li>
+    <li className='text-white'><NavLink to='/aboutUs'>About Us</NavLink></li>
     {
       user && <>
         <li className='text-white'><NavLink to='/createPartnerProfile'>Create Partner Profile</NavLink></li>
@@ -142,12 +143,12 @@ const Navbar = () => {
 
             user ? <div className="dropdown dropdown-bottom dropdown-end">
               <div tabIndex={0} role="button" className=" m-1 cursor-pointer">
-                <figure className='w-[50px] h-[50px]'>
-                  <img className='rounded-full object-cover' src={user?.photoURL} alt={user?.displayName || 'User'} />
+                <figure className=''>
+                  <img className='w-[50px] h-[50px] rounded-full object-cover' src={user?.photoURL} alt={user?.displayName || 'User'} />
                 </figure>
               </div>
               <ul tabIndex="-1" className="dropdown-content menu bg-gray-600  rounded-box z-1 w-52 p-2 shadow-sm">
-                <li><Link className='text-white' to='/profile'>Profile</Link></li>
+                <li><Link className='text-white' to='/dashboard'>Dashboard</Link></li>
                 <li><button className='text-white' onClick={handleSignOut}> <LuLogOut />Logout</button></li>
 
               </ul>

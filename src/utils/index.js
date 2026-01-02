@@ -1,3 +1,4 @@
+import axios from "axios";
 
 
 export const resourcesData = [
@@ -297,3 +298,15 @@ export const faqData = [
       "You can report any inappropriate behavior from your dashboard. Our team reviews reports promptly and takes action to ensure a safe learning environment.",
   },
 ];
+
+
+export const imageUploadCloudinary = async(imageData) => {
+    const formData = new FormData();
+      formData.append('file', imageData);
+      formData.append('upload_preset',
+         import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
+
+       const res = await axios.post(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, formData);
+
+       return res.data.secure_url;
+}

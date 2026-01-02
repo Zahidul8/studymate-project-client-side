@@ -1,5 +1,5 @@
 import React from "react";
-import { blogPosts } from "../utils/resourceData";
+import { blogPosts } from "../utils";
 
 // Sample blog data
 
