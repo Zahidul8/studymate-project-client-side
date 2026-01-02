@@ -10,6 +10,7 @@ import DetailsPage from "../pages/DetailsPage";
 import Profile from "../pages/Profile";
 import PrivateRouter from "./PrivateRouter";
 import ErrorPage from "../pages/ErrorPage";
+import Resources from "../pages/Resources";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: '/findPartners',
                 Component: FindPartners,
+            },
+            {
+                path: '/resources',
+                Component: Resources,
             },
             {
                 path: '/login',
