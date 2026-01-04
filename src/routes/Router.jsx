@@ -13,6 +13,7 @@ import ErrorPage from "../pages/ErrorPage";
 import Resources from "../pages/Resources";
 import AboutUs from "../pages/AboutUs";
 import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardHome from "../pages/DashboardHome";
 
 const router = createBrowserRouter([
     {
@@ -74,9 +75,27 @@ const router = createBrowserRouter([
         </PrivateRouter>,
         children: [
             {
+                index: true,
+                element:<PrivateRouter>
+                    <DashboardHome></DashboardHome>
+                </PrivateRouter> 
+            },
+            {
                 path: '/dashboard/profile',
                 element: <PrivateRouter>
                     <Profile></Profile>
+                </PrivateRouter>
+            },
+              {
+                path: '/dashboard/myConnections',
+                element: <PrivateRouter>
+                    <MyConnections></MyConnections>
+                </PrivateRouter>
+            },
+              {
+                path: '/dashboard/createPartnerProfile',
+                element: <PrivateRouter>
+                    <CreatePartnerProfile></CreatePartnerProfile>
                 </PrivateRouter>
             },
 
