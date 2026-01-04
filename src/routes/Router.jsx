@@ -16,7 +16,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 
 const router = createBrowserRouter([
     {
-        path:'/', 
+        path: '/',
         Component: RootLayout,
         children: [
             {
@@ -52,36 +52,33 @@ const router = createBrowserRouter([
             },
             {
                 path: '/createPartnerProfile',
-                element:<PrivateRouter>
+                element: <PrivateRouter>
                     <CreatePartnerProfile></CreatePartnerProfile>
                 </PrivateRouter>
             },
             {
                 path: '/DetailsPage/:id',
-                element:<DetailsPage></DetailsPage>
+                element: <DetailsPage></DetailsPage>
             },
+
             {
-                path: '/profile',
-                element: <PrivateRouter>
-                    <Profile></Profile>
-                </PrivateRouter>
-            },
-            {
-                path:"/*",
+                path: "/*",
                 Component: ErrorPage,
             }
         ]
     },
     {
-         path:'/dashboard', 
+        path: '/dashboard',
         element: <PrivateRouter>
             <DashboardLayout></DashboardLayout>
         </PrivateRouter>,
-        children:[
-          {
-            index:true,
-            Component: Profile
-          }
+        children: [
+            {
+                path: '/dashboard/profile',
+                element: <PrivateRouter>
+                    <Profile></Profile>
+                </PrivateRouter>
+            },
 
         ]
     }
